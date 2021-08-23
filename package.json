@@ -1,0 +1,53 @@
+{
+    "name": "rumfoords",
+    "version": "1.0.0",
+    "description": "Codebase powering rumfoords.com.",
+    "author": "CTHDRL",
+    "private": true,
+    "scripts": {
+        "dev": "nuxt",
+        "build": "nuxt build",
+        "start": "nuxt start",
+        "generate": "nuxt generate",
+        "heroku-postbuild": "npm run build"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true
+    },
+    "engines": {
+        "node": "12.22.1"
+    },
+    "dependencies": {
+        "@babel/core": "^7.14.6",
+        "@fuzzco/font-loader": "^1.0.2",
+        "@nuxtjs/component-cache": "^1.1.6",
+        "@nuxtjs/gtm": "^2.4.0",
+        "@nuxtjs/prismic": "^1.3.1",
+        "@nuxtjs/style-resources": "^0.1.2",
+        "cross-fetch": "^3.1.4",
+        "email-validator": "^2.0.4",
+        "fetch-jsonp": "^1.1.3",
+        "fitvids": "^2.1.1",
+        "flickity": "^2.2.2",
+        "imagesloaded": "4.1.4",
+        "intersection-observer": "^0.12.0",
+        "lodash": "^4.17.21",
+        "lru-cache": "^5.1.1",
+        "nuxt": "^2.15.7",
+        "popmotion": "^8.7.6",
+        "prismic-dom": "^2.2.5",
+        "prismic-javascript": "^3.0.2",
+        "resize-observer-polyfill": "^1.5.1",
+        "three": "^0.131.3",
+        "vue": "^2.6.14"
+    },
+    "devDependencies": {
+        "babel-core": "7.0.0-bridge.0",
+        "dotenv": "^7.0.0",
+        "node-sass": "^4.14.1",
+        "prettier": "^2.3.1",
+        "sass-loader": "^10.1.1"
+    }
+}

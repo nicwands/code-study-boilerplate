@@ -1,0 +1,34 @@
+/*
+    Font Weights:
+        100 - Thin
+        200 - Extra Light (Ultra Light)
+        300 - Light
+        400 - Normal
+        500 - Medium
+        600 - Semi Bold (Demi Bold)
+        700 - Bold
+        800 - Extra Bold (Ultra Bold)
+        900 - Black (Heavy)
+*/
+
+@font-face {
+    font-family: 'SweetSans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('SweetSans-Regular.woff2') format('woff2'),
+        url('SweetSans-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: 'SweetSans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('SweetSans-Medium.woff2') format('woff2'),
+        url('SweetSans-Medium.woff') format('woff');
+}
+@font-face {
+    font-family: 'WT-Monarch';
+    font-style: normal;
+    font-weight: 400;
+    src: url('WT-Monarch.woff2') format('woff2'),
+        url('WT-Monarch.woff') format('woff');
+}
