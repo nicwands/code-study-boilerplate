@@ -17,17 +17,10 @@
         <!-- BACKGROUND -->
         <transition name="fade">
             <div v-if="pathID" class="clip-container" :style="clipStyles">
-                <!--                 <prismic-image
-                    v-bind="settings.hover_link_fallback"
-                    :videoSrc="videoSrc"
-                    fill-space
-                /> -->
-                <video
-                    src="https://prismic-io.s3.amazonaws.com/rumfoords/779247b4-87cb-4908-b0a1-1b0a96078fc1_Splash_BG+%281%29.mp4"
-                    muted
-                    autoplay
-                    loop
-                />
+                <transition name="fade">
+                    <img v-if="!videoSrc.length" :src="imageSrc" />
+                    <video v-else :src="videoSrc" muted autoplay loop />
+                </transition>
 
                 <div class="color-bg" />
             </div>
@@ -36,13 +29,21 @@
 </template>
 
 <script>
-import _camelCase from 'https://cdn.skypack.dev/lodash@4.17.21/camelCase'
+import _camelCase from 'lodash/camelCase'
 
 export default {
     props: {
         text: {
             type: String,
-            default: 'test text',
+            default: '',
+        },
+        imageSrc: {
+            type: String,
+            default: '',
+        },
+        videoSrc: {
+            type: String,
+            default: '',
         },
     },
     data() {
@@ -60,20 +61,16 @@ export default {
         }
     },
     computed: {
-        settings() {
-            return this.$store.state.settings
-        },
-        videoSrc() {
-            return this.settings.hover_link_background?.url
-        },
         clipStyles() {
             return {
                 clipPath: `url('#${this.pathID}')`,
             }
         },
         fontSize() {
+            console.log(typeof this.$el)
+            return '40px'
             return window
-                .getComputedStyle(this.$el, null)
+                .getComputedStyle(this.$el)
                 .getPropertyValue('font-size')
         },
         textStyles() {
@@ -86,12 +83,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700');
-
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 40px;
-    color: black;
 }
 
 .rainbow-clip {
@@ -109,40 +103,32 @@ body {
 
         text {
             font-size: inherit;
+            font-weight: inherit;
         }
     }
     .clip-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
+        @include fill;
 
         .color-bg {
             opacity: 1;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
+            @include fill;
             background: currentColor;
             transition: opacity 300ms ease-in-out;
         }
-        .video {
+        video,
+        img {
             opacity: 0;
             transition: opacity 300ms ease-in-out;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
+            @include fill;
+            width: 100%;
         }
     }
     &:hover .clip-container {
         .color-bg {
             opacity: 0;
         }
-        .prismic-image {
+        video,
+        img {
             opacity: 1;
         }
     }
