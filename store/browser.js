@@ -60,12 +60,12 @@ export const actions = {
             context.commit('FONTS_LOADING')
             await loadFonts([
                 {
-                    name: 'SweetSans',
+                    name: 'EB Garamund',
                     weights: [400, 700],
                 },
                 {
-                    name: 'WT-Monarch',
-                    weights: [400],
+                    name: 'Poppins',
+                    weights: [300, 400, 700],
                 },
             ])
             context.commit('FONTS_LOADED')

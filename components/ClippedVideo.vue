@@ -1,25 +1,32 @@
 <template>
-    <div class="rainbow-clip" :style="textStyles">
+    <div class="clipped-video" :style="textStyles">
         <!-- TEXT -->
-        <svg v-if="text" class="text-svg" ref="textSvg">
+        <svg v-if="defaultSlot.text" class="text-svg" ref="textSvg">
             <defs>
                 <clipPath :id="pathID">
                     <text x="0" :y="fontSize" ref="text">
-                        {{ text }}
+                        {{ defaultSlot.text }}
                     </text>
                 </clipPath>
             </defs>
         </svg>
 
         <!-- SVG -->
-        <slot />
+        <slot v-else />
 
         <!-- BACKGROUND -->
         <transition name="fade">
             <div v-if="pathID" class="clip-container" :style="clipStyles">
                 <transition name="fade">
-                    <img v-if="!videoSrc.length" :src="imageSrc" />
-                    <video v-else :src="videoSrc" muted autoplay loop />
+                    <img v-if="!videoSrc.length" :src="imageSrc" key="image" />
+                    <video
+                        v-else
+                        :src="videoSrc"
+                        muted
+                        autoplay
+                        loop
+                        key="video"
+                    />
                 </transition>
 
                 <div class="color-bg" />
@@ -49,26 +56,30 @@ export default {
     data() {
         return {
             pathID: null,
+            svgChildren: [],
         }
     },
     mounted() {
-        if (this.text) {
-            this.pathID = _camelCase(this.text)
+        if (this.defaultSlot.text) {
+            this.pathID = _camelCase(this.defaultSlot.text)
             const textLength = this.$refs.text.getComputedTextLength()
             this.$refs.textSvg.style.width = textLength + 'px'
-        } else if (this.$slots.default[0]) {
+        } else {
+            console.log(this.$slots.default[0])
             this.pathID = this.$el.querySelector('clipPath')?.id
         }
     },
     computed: {
+        defaultSlot() {
+            return this.$slots.default[0]
+        },
         clipStyles() {
             return {
                 clipPath: `url('#${this.pathID}')`,
             }
         },
         fontSize() {
-            console.log(typeof this.$el)
-            return '40px'
+            if (process.server) return
             return window
                 .getComputedStyle(this.$el)
                 .getPropertyValue('font-size')
@@ -83,16 +94,9 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 40px;
-}
-
-.rainbow-clip {
+.clipped-video {
     position: relative;
-    font-size: inherit;
     display: inline-block;
-    cursor: pointer;
 
     svg {
         width: 100%;
@@ -108,6 +112,8 @@ body {
     }
     .clip-container {
         @include fill;
+        width: 100%;
+        height: 100%;
 
         .color-bg {
             opacity: 1;
@@ -121,6 +127,8 @@ body {
             transition: opacity 300ms ease-in-out;
             @include fill;
             width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
     &:hover .clip-container {
