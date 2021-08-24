@@ -107,13 +107,8 @@ a {
     path {
         transition: fill 0.3s;
     }
-
-    @include hover {
-        color: var(--white);
-
-        path {
-            fill: var(--white);
-        }
+    &:hover {
+        text-decoration: underline;
     }
 }
 
