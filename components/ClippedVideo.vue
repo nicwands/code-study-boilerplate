@@ -94,7 +94,7 @@ export default {
             this.svgEl = this.defaultSlot.elm
             this.svgEl.style.display = 'none'
             this.svgChildren = [...this.svgEl.children]
-            this.pathID = 'testSVG'
+            this.pathID = 'clip' + this.svgEl.id
         }
     },
     computed: {

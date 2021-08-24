@@ -1,6 +1,7 @@
 <template>
     <section class="study-body">
-        <!-- SELECT IMAGe -->
+        <!-- SELECT IMAGE -->
+        <span>IMAGE</span>
         <select v-model="selectedImage">
             <option
                 v-for="(image, i) in images"
@@ -13,6 +14,7 @@
         </select>
 
         <!-- SELECT VIDEO -->
+        <span>VIDEO</span>
         <select v-model="selectedVideo">
             <option
                 v-for="(video, i) in videos"
@@ -47,7 +49,7 @@
             :imageSrc="selectedImage"
             :videoSrc="selectedVideo"
         >
-            <svg-social-twitter />
+            <svg-social-facebook />
         </clipped-video>
 
         <!-- HOVER -->
@@ -66,7 +68,7 @@
             :videoSrc="selectedVideo"
             showOnHover
         >
-            <svg-social-twitter />
+            <svg-social-instagram />
         </clipped-video>
     </section>
 </template>
