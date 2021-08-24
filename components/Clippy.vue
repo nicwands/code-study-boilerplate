@@ -67,7 +67,7 @@
 <script>
 import _camelCase from 'lodash/camelCase'
 
-/**a
+/**
  * Text or SVG element can be slotted in to create clipping effect
  *
  * SVG must have an id set, and contain only path elements
