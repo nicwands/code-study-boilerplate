@@ -8,6 +8,7 @@
                     class="text-clip"
                     imageSrc="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fi.huffpost.com%2Fgen%2F3532216%2Fimages%2Fo-BABY-DUMMY-facebook.jpg&f=1&nofb=1"
                     videoSrc="https://prismic-io.s3.amazonaws.com/rumfoords/779247b4-87cb-4908-b0a1-1b0a96078fc1_Splash_BG+%281%29.mp4"
+                    showOnHover
                 >
                     CTHDRL
                 </clipped-video>
@@ -16,7 +17,7 @@
                     class="svg-clip"
                     imageSrc="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fi.huffpost.com%2Fgen%2F3532216%2Fimages%2Fo-BABY-DUMMY-facebook.jpg&f=1&nofb=1"
                 >
-                    <svg-facebook-clipped />
+                    <svg-social-facebook />
                 </clipped-video>
             </section>
         </div>
