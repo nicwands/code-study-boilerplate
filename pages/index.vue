@@ -11,6 +11,7 @@
             <!-- LINK -->
             <a
                 href="https://github.com/nicwands/code-study-boilerplate/blob/clipped-video/components/Clippy.vue"
+                target="_blank"
                 >SOURCE</a
             >
 
