@@ -1,8 +1,9 @@
 <template>
-    <div class="clipped-video" :style="textStyles">
-        <!-- SVG -->
+    <div class="clippy" :style="textStyles">
+        <!-- HIDDEN DUMMY SVG -->
         <slot v-if="!defaultSlot.text" />
 
+        <!-- RENDERED SVG -->
         <svg
             ref="renderSvg"
             :class="{ 'text-svg': defaultSlot.text }"
@@ -17,6 +18,7 @@
                     :clipPathUnits="clipPathUnits"
                     :transform="clipTransform"
                 >
+                    <!-- TEXT -->
                     <text
                         v-if="defaultSlot.text"
                         x="0"
@@ -25,6 +27,8 @@
                     >
                         {{ defaultSlot.text }}
                     </text>
+
+                    <!-- SVG PATH -->
                     <component
                         v-for="(child, i) in svgChildren"
                         :is="child.tagName"
@@ -68,6 +72,7 @@ export default {
         imageSrc: {
             type: String,
             default: '',
+            required: true,
         },
         videoSrc: {
             type: String,
@@ -81,19 +86,32 @@ export default {
     data() {
         return {
             pathID: null,
+            fontSize: '12px',
             svgEl: {},
             svgChildren: [],
         }
     },
     mounted() {
+        // if the slot contains text
         if (this.defaultSlot.text) {
+            // set unique id of clipPath
             this.pathID = _camelCase(this.defaultSlot.text)
+            // get rendered length of text and set width of final svg
             const textLength = this.$refs.text.getComputedTextLength()
             this.$refs.renderSvg.style.width = textLength + 'px'
-        } else {
+            // set inherited font-size to data
+            this.fontSize = window
+                .getComputedStyle(this.$el)
+                .getPropertyValue('font-size')
+        }
+        // if the slot contains an element
+        else if (this.defaultSlot.elm) {
             this.svgEl = this.defaultSlot.elm
+            // hide the slotted svg
             this.svgEl.style.display = 'none'
+
             this.svgChildren = [...this.svgEl.children]
+            // set unique id of clipPath
             this.pathID = 'clip' + this.svgEl.id
         }
     },
@@ -105,12 +123,6 @@ export default {
             return {
                 clipPath: `url('#${this.pathID}')`,
             }
-        },
-        fontSize() {
-            if (process.server) return
-            return window
-                .getComputedStyle(this.$el)
-                .getPropertyValue('font-size')
         },
         textStyles() {
             return {
@@ -124,11 +136,11 @@ export default {
         },
         svgWidth() {
             if (!this.svgEl.getAttribute) return 0
-            return this.svgEl?.getAttribute('width')
+            return this.svgEl.getAttribute('width')
         },
         svgHeight() {
             if (!this.svgEl.getAttribute) return 0
-            return this.svgEl?.getAttribute('height')
+            return this.svgEl.getAttribute('height')
         },
         xScale() {
             return 1 / parseInt(this.svgWidth)
@@ -150,7 +162,7 @@ export default {
 </script>
 
 <style lang="scss">
-.clipped-video {
+.clippy {
     position: relative;
     display: inline-block;
 
@@ -181,29 +193,28 @@ export default {
             height: 100%;
             object-fit: cover;
         }
+    }
 
-        &.show-on-hover {
-            .color-bg {
-                opacity: 1;
-                @include fill;
-                background: currentColor;
-                transition: opacity 300ms ease-in-out;
-            }
-            video,
-            img {
-                opacity: 0;
-                transition: opacity 300ms ease-in-out;
-            }
-
-            &:hover {
-                .color-bg {
-                    opacity: 0;
-                }
-                video,
-                img {
-                    opacity: 1;
-                }
-            }
+    .show-on-hover {
+        .color-bg {
+            opacity: 1;
+            @include fill;
+            background: currentColor;
+            transition: opacity 300ms ease-in-out;
+        }
+        video,
+        img {
+            opacity: 0;
+            transition: opacity 300ms ease-in-out;
+        }
+    }
+    &:hover .show-on-hover {
+        .color-bg {
+            opacity: 0;
+        }
+        video,
+        img {
+            opacity: 1;
         }
     }
 }

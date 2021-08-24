@@ -1,7 +1,13 @@
 <template>
     <main class="front-page">
         <div class="contained">
-            <h1>CODE STUDY 1.0</h1>
+            <!-- STUDY TITLE -->
+            <h1>CODE STUDY 1.0 - CLIPPY</h1>
+            <!-- DESCRIPTION -->
+            <p>
+                A reusable component for masking videos and images with SVGs and
+                text
+            </p>
 
             <study-body />
         </div>

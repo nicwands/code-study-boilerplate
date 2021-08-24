@@ -28,48 +28,46 @@
 
         <!-- IMAGE ONLY -->
         <h4>IMAGE ONLY</h4>
-        <clipped-video class="text-clip" :imageSrc="selectedImage">
-            CTHDRL
-        </clipped-video>
-        <clipped-video class="svg-clip" :imageSrc="selectedImage">
+        <clippy class="text-clip" :imageSrc="selectedImage"> CTHDRL </clippy>
+        <clippy class="svg-clip" :imageSrc="selectedImage">
             <svg-social-twitter />
-        </clipped-video>
+        </clippy>
 
         <!-- VIDEO -->
         <h4>WITH VIDEO</h4>
-        <clipped-video
+        <clippy
             class="text-clip"
             :imageSrc="selectedImage"
             :videoSrc="selectedVideo"
         >
             CTHDRL
-        </clipped-video>
-        <clipped-video
+        </clippy>
+        <clippy
             class="svg-clip"
             :imageSrc="selectedImage"
             :videoSrc="selectedVideo"
         >
             <svg-social-facebook />
-        </clipped-video>
+        </clippy>
 
         <!-- HOVER -->
         <h4>REVEAL ON HOVER</h4>
-        <clipped-video
+        <clippy
             class="text-clip"
             :imageSrc="selectedImage"
             :videoSrc="selectedVideo"
             showOnHover
         >
             CTHDRL
-        </clipped-video>
-        <clipped-video
+        </clippy>
+        <clippy
             class="svg-clip"
             :imageSrc="selectedImage"
             :videoSrc="selectedVideo"
             showOnHover
         >
             <svg-social-instagram />
-        </clipped-video>
+        </clippy>
     </section>
 </template>
 
