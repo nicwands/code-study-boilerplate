@@ -1,4 +1,4 @@
-# Rumfoords
+# Code Study Boilerplate
 
 **Local Development**
 

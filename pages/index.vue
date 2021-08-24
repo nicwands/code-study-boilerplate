@@ -8,6 +8,11 @@
                 A reusable component for masking videos and images with SVGs and
                 text
             </p>
+            <!-- LINK -->
+            <a
+                href="https://github.com/nicwands/code-study-boilerplate/blob/clipped-video/components/Clippy.vue"
+                >SOURCE</a
+            >
 
             <study-body />
         </div>
