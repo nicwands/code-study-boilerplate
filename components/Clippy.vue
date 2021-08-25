@@ -127,7 +127,7 @@ export default {
         },
         clipStyles() {
             return {
-                clipPath: `url('#${this.pathID}')`,
+                '--path-url': `url('#${this.pathID}')`,
             }
         },
         textStyles() {
@@ -188,6 +188,8 @@ export default {
         @include fill;
         width: 100%;
         height: 100%;
+        -webkit-clip-path: var(--path-url);
+        clip-path: var(--path-url);
 
         .color-bg {
             opacity: 0;
