@@ -1,19 +1,21 @@
 <template>
     <main class="front-page">
         <div class="contained">
-            <!-- STUDY TITLE -->
-            <h1>CODE STUDY 1.0 - CLIPPY</h1>
-            <!-- DESCRIPTION -->
-            <p>
-                A reusable component for masking videos and images with SVGs and
-                text
-            </p>
-            <!-- LINK -->
-            <a
-                href="https://github.com/nicwands/code-study-boilerplate/blob/clipped-video/components/Clippy.vue"
-                target="_blank"
-                >SOURCE</a
-            >
+            <section class="info">
+                <!-- STUDY TITLE -->
+                <h1>CODE STUDY 1.0 - VHS IMAGE</h1>
+                <!-- DESCRIPTION -->
+                <p>
+                    A reusable component for adding a VHS effect to images and
+                    video
+                </p>
+                <!-- LINK -->
+                <a
+                    href="https://github.com/nicwands/code-study-boilerplate/blob/clipped-video/components/Clippy.vue"
+                    target="_blank"
+                    >SOURCE</a
+                >
+            </section>
 
             <study-body />
         </div>

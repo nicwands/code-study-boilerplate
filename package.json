@@ -40,6 +40,7 @@
         "prismic-dom": "^2.2.5",
         "prismic-javascript": "^3.0.2",
         "resize-observer-polyfill": "^1.5.1",
+        "shader-doodle": "^1.0.0-alpha.19",
         "three": "^0.131.3",
         "vue": "^2.6.14"
     },
