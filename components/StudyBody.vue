@@ -1,7 +1,8 @@
 <template>
     <section class="study-body">
         <client-only>
-            <vhs-image :imageSrc="image" />
+            <!-- <vhs-image :imageSrc="image" /> -->
+            <blotter />
         </client-only>
     </section>
 </template>

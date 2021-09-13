@@ -42,7 +42,8 @@
         "resize-observer-polyfill": "^1.5.1",
         "shader-doodle": "^1.0.0-alpha.19",
         "three": "^0.131.3",
-        "vue": "^2.6.14"
+        "vue": "^2.6.14",
+        "vue-blotter": "^0.1.3"
     },
     "devDependencies": {
         "babel-core": "7.0.0-bridge.0",
