@@ -3,7 +3,7 @@
         <div class="contained">
             <section class="info">
                 <!-- STUDY TITLE -->
-                <h1>CODE STUDY 1.0 - VHS IMAGE</h1>
+                <h1>CODE STUDY 2.0 - VHS IMAGE</h1>
                 <!-- DESCRIPTION -->
                 <p>
                     A reusable component for adding a VHS effect to images and
