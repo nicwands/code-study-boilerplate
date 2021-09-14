@@ -11,7 +11,7 @@
                 </p>
                 <!-- LINK -->
                 <a
-                    href="https://github.com/nicwands/code-study-boilerplate/blob/clipped-video/components/Clippy.vue"
+                    href="https://github.com/nicwands/code-study-boilerplate/blob/vhs-image/components/VhsImage.vue"
                     target="_blank"
                     >SOURCE</a
                 >
