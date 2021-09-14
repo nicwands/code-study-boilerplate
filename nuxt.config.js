@@ -53,6 +53,14 @@ const universal = {
             { rel: 'icon', href: '/images/favicon.png' },
             { rel: 'stylesheet', href: '/fonts/fonts.css' },
         ],
+        script: [
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/blotter.min.js',
+            },
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/channelSplitMaterial.min.js',
+            },
+        ],
     },
 
     /*
