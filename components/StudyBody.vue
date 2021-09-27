@@ -1,22 +1,9 @@
 <template>
-    <section class="study-body">
-        <client-only>
-            <vhs-image :imageSrc="image" />
-        </client-only>
-    </section>
+    <section class="study-body"></section>
 </template>
 
 <script>
-const imageUrl = '/images/alpaca.jpg'
-// const imageUrl = '/videos/shovel.mp4'
-
-export default {
-    data() {
-        return {
-            image: imageUrl,
-        }
-    },
-}
+export default {}
 </script>
 
 <style lang="scss">
