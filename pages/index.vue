@@ -3,15 +3,15 @@
         <div class="contained">
             <section class="info">
                 <!-- STUDY TITLE -->
-                <h1>CODE STUDY 1.0 - VHS IMAGE</h1>
+                <h1>CODE STUDY 3.0 - UPSHOT TECH</h1>
                 <!-- DESCRIPTION -->
                 <p>
-                    A reusable component for adding a VHS effect to images and
-                    video
+                    A proof-of-concept for the tech stack of the Upshot
+                    Tesseracts
                 </p>
                 <!-- LINK -->
                 <a
-                    href="https://github.com/nicwands/code-study-boilerplate/blob/clipped-video/components/Clippy.vue"
+                    href="https://github.com/nicwands/code-study-boilerplate/blob/upshot"
                     target="_blank"
                     >SOURCE</a
                 >

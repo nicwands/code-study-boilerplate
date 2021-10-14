@@ -1,17 +1,9 @@
 <template>
-    <section class="study-body">
-        <!-- <canvas-render /> -->
-    </section>
+    <section class="study-body">hello</section>
 </template>
 
 <script>
-import { Universe } from '~/pkg/webasm_canvas'
-
-export default {
-    async mounted() {
-        console.log(Universe)
-    },
-}
+export default {}
 </script>
 
 <style lang="scss">
