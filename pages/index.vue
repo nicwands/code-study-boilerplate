@@ -11,7 +11,7 @@
                 </p>
                 <!-- LINK -->
                 <a
-                    href="https://github.com/nicwands/code-study-boilerplate/blob/upshot"
+                    href="https://github.com/nicwands/code-study-boilerplate/tree/upshot"
                     target="_blank"
                     >SOURCE</a
                 >

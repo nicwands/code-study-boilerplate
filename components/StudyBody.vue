@@ -1,5 +1,7 @@
 <template>
-    <section class="study-body">hello</section>
+    <section class="study-body">
+        <zora-info />
+    </section>
 </template>
 
 <script>

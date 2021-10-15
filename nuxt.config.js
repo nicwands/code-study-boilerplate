@@ -78,6 +78,14 @@ const universal = {
     //     id: 'GTM-P9TGQDN',
     // },
 
+    graphql: {
+        clients: {
+            default: {
+                endpoint: process.env.ZORA_API_URL,
+            },
+        },
+    },
+
     /*
      * Plugins
      */
