@@ -78,6 +78,8 @@ const universal = {
     //     id: 'GTM-P9TGQDN',
     // },
 
+    buildModules: ['nuxt-graphql-request'],
+
     graphql: {
         clients: {
             default: {
