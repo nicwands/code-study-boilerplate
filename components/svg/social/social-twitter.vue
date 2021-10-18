@@ -1,5 +1,6 @@
 <template functional>
     <svg
+        id="twitter"
         width="29"
         height="23"
         viewBox="0 0 29 23"

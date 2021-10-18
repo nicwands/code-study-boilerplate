@@ -78,6 +78,16 @@ const universal = {
     //     id: 'GTM-P9TGQDN',
     // },
 
+    buildModules: ['nuxt-graphql-request'],
+
+    graphql: {
+        clients: {
+            default: {
+                endpoint: process.env.ZORA_API_URL,
+            },
+        },
+    },
+
     /*
      * Plugins
      */
