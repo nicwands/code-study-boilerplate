@@ -4,13 +4,14 @@
 
 <script>
 // import { auctionQuery } from '../libs/zora'
-import { ethers } from 'ethers'
+import { ethers, Wallet } from 'ethers'
 import {
     Zora,
     AuctionHouse,
     Decimal,
     constructBid,
     approveERC20,
+    getZoraProfiles,
 } from '@zoralabs/zdk'
 
 export default {
@@ -18,7 +19,6 @@ export default {
         if (!this.userWallet) {
             await this.$store.dispatch('web3/CONNECT_WALLET')
         }
-
         // create Zora instance, 1 for mainnet - 4 for rinkeby
         this.zora = new Zora(this.userWallet, 4)
         console.log(this.zora)
@@ -27,7 +27,9 @@ export default {
         this.auctionHouse = new AuctionHouse(this.userWallet, 4)
         console.log(this.auctionHouse)
 
-        const mediaToken = '0x12345'
+        return
+
+        const mediaToken = '0x88b48f654c30e99bc2e4a1559b4dcf1ad93fa656'
         await this.createAuction(mediaToken)
 
         const amount = Decimal.new(10).value // amount of bid (10*10^18)
@@ -50,6 +52,8 @@ export default {
                 this.auctionHouse.address,
                 tokenId
             )
+
+            console.log(approvalTx)
 
             // await confirmation of the approval
             await approvalTx.wait()

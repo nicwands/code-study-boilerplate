@@ -42,10 +42,10 @@ export default async ({ store, route }, inject) => {
     store.dispatch('browser/LOAD_FONTS')
 
     // check for walletconnect storage item
-    const wcStorageItem = localStorage.getItem('walletconnect')
-    if (wcStorageItem) {
-        // if it's there, connect the user's wallet
-        store.commit('web3/SET_WC_COOKIE', true)
-        store.dispatch('web3/CONNECT_WALLET')
-    }
+    // const wcStorageItem = localStorage.getItem('walletconnect')
+    // if (wcStorageItem) {
+    //     // if it's there, connect the user's wallet
+    //     store.commit('web3/SET_WC_COOKIE', true)
+    //     store.dispatch('web3/CONNECT_WALLET')
+    // }
 }

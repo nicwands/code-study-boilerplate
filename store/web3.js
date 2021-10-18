@@ -38,6 +38,8 @@ export const actions = {
                 rpc: {
                     // ETH
                     1: 'https://cloudflare-eth.com',
+                    // Rinkeby
+                    4: 'https://cloudflare-eth.com',
                 },
                 // qrcode: false,
             })
@@ -60,9 +62,8 @@ export const actions = {
             const web3Provider = new providers.Web3Provider(provider)
             //  Create ethers wallet instance
             const wallet = Wallet.createRandom().connect(web3Provider)
-            console.log(wallet)
 
-            context.commit('SET_WALLET', wallet)
+            context.commit('SET_WALLET', Object.freeze(wallet))
         } catch (err) {
             throw err
         }
