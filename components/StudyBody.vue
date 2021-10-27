@@ -1,6 +1,6 @@
 <template>
     <section class="study-body">
-        <zora-info />
+        <face-morph />
     </section>
 </template>
 
