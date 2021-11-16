@@ -5,7 +5,26 @@
 </template>
 
 <script>
-import { PerspectiveCamera, Scene, WebGLRenderer } from 'three'
+import {
+    PerspectiveCamera,
+    Scene,
+    WebGLRenderer,
+    PlaneGeometry,
+    MeshPhongMaterial,
+    TextureLoader,
+    Mesh,
+    PointLight,
+    DoubleSide,
+    Vector2,
+    ShaderMaterial,
+    BufferAttribute,
+    BufferGeometry,
+} from 'three'
+import { OrbitControls } from '~/libs/OrbitControls'
+import fragmentShader from '~/libs/shaders/fragment.glsl'
+import vertexShader from '~/libs/shaders/vertex.glsl'
+const glslify = require('glslify')
+
 require('resize-observer-polyfill/dist/ResizeObserver.global')
 
 export default {
@@ -26,6 +45,10 @@ export default {
         // prep scene
         this.scene = new Scene()
 
+        const light = new PointLight(0xffffff, 2)
+        light.position.set(0, 4, 3)
+        this.scene.add(light)
+
         // prep camera
         const fov = 15
         this.camera = new PerspectiveCamera(fov, 0.5625, 0.1, 1000)
@@ -36,6 +59,79 @@ export default {
             antialias: true,
             alpha: true,
         })
+
+        this.orbitControls = new OrbitControls(
+            this.camera,
+            this.renderer.domElement
+        )
+
+        const planeGeometry = new PlaneGeometry(1, 1)
+
+        const diffuseTexture = new TextureLoader().load(
+            '/images/skin-diffuse.jpg'
+        )
+        const normalTexture = new TextureLoader().load(
+            '/images/skin-normals.jpg'
+        )
+        const specTexture = new TextureLoader().load('/images/skin-spec.jpg')
+        const displaceTexture = new TextureLoader().load(
+            '/images/skin-displace.jpg'
+        )
+
+        const material = new MeshPhongMaterial({
+            map: diffuseTexture,
+            normalMap: normalTexture,
+            normalScale: new Vector2(1, 1),
+            specularMap: specTexture,
+            // displacementMap: displaceTexture,
+            // displacementScale: 0.1,
+            side: DoubleSide,
+        })
+
+        const plane = new Mesh(planeGeometry, material)
+        this.scene.add(plane)
+
+        this.camera.position.z = 5
+
+        // tattoo
+        const tattooGeometry = new BufferGeometry()
+        // create a simple square shape. We duplicate the top left and bottom right
+        // vertices because each vertex needs to appear once per triangle.
+        const vertices = new Float32Array([
+            -0.25, -0.25, 0.001, 0.25, -0.25, 0.001, 0.25, 0.25, 0.001, 0.25,
+            0.25, 0.001, -0.25, 0.25, 0.001, -0.25, -0.25, 0.001,
+        ])
+
+        // itemSize = 3 because there are 3 values (components) per vertex
+        tattooGeometry.setAttribute(
+            'position',
+            new BufferAttribute(vertices, 3)
+        )
+
+        // const tattooMaterial = new ShaderMaterial({
+        //     uniforms: {
+        //         bgDiffuse: diffuseTexture,
+        //         bgNormals: normalTexture,
+        //         bgSpecular: specTexture,
+        //     },
+        //     vertexShader,
+        //     fragmentShader,
+        // })
+
+        const tattooMaterial = new MeshPhongMaterial({
+            color: '#ff0000',
+            map: diffuseTexture,
+            normalMap: normalTexture,
+            normalScale: new Vector2(1, 1),
+            specularMap: specTexture,
+            // displacementMap: displaceTexture,
+            // displacementScale: 0.1,
+            side: DoubleSide,
+        })
+
+        const tattooMesh = new Mesh(tattooGeometry, tattooMaterial)
+
+        this.scene.add(tattooMesh)
 
         // update canvas size
         this.updateSize()

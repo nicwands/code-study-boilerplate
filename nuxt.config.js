@@ -9,6 +9,12 @@ const universal = {
      */
     components: ['~/components'],
     build: {
+        extend(config) {
+            config.module.rules.push({
+                test: /\.glsl$/,
+                loader: 'webpack-glsl-loader',
+            })
+        },
         plugins: [
             new webpack.ProvidePlugin({
                 _get: 'lodash/get',
