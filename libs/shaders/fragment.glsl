@@ -66,7 +66,7 @@ void main() {
     float alpha = 0.;
 
 
-    alpha = clamp(selectInk(1, dist, vUv), 0., 1.);
+    alpha = clamp(selectInk(0, dist, vUv), 0., 1.);
 
     gl_FragColor.rgb = vec3(0.);
     gl_FragColor.a = alpha;
