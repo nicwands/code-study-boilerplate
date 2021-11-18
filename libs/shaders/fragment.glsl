@@ -21,7 +21,7 @@ uniform sampler2D bgSpecular;
 
 float absorb(float sdf, vec2 uv, float scale, float falloff) {
   float distort = sdf + noise2(uv * scale) * falloff;
-  float strength = mix(0.4, 1.2, abs(sin(time / 300.)));
+  float strength = mix(0.35, 1.2, abs(sin(time / 150.)));
   return aastep(strength, distort);
 }
 
