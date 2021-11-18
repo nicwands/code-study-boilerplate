@@ -93,37 +93,26 @@ export default {
         this.camera.position.z = 5
 
         // tattoo
-        const tattooGeometry = new BufferGeometry()
-        // create a simple square shape. We duplicate the top left and bottom right
-        // vertices because each vertex needs to appear once per triangle.
-        const vertices = new Float32Array([
-            -0.25, -0.25, 0.001, 0.25, -0.25, 0.001, 0.25, 0.25, 0.001, 0.25,
-            0.25, 0.001, -0.25, 0.25, 0.001, -0.25, -0.25, 0.001,
-        ])
+        const tattooGeometry = new PlaneGeometry()
 
-        // itemSize = 3 because there are 3 values (components) per vertex
-        tattooGeometry.setAttribute(
-            'position',
-            new BufferAttribute(vertices, 3)
-        )
+        const tattooTexture = new TextureLoader().load('/images/tattoo-sdf.png')
 
-        const tattooTexture = new TextureLoader().load('/images/favicon.png')
-
-        // tattooGeometry.setAttribute('')
-
-        const tattooMaterial = new ShaderMaterial({
+        this.tattooMaterial = new ShaderMaterial({
             uniforms: {
-                tattooMap: tattooTexture,
-                bgDiffuse: diffuseTexture,
-                bgNormals: normalTexture,
-                bgSpecular: specTexture,
+                time: { value: 0.0 },
+                tattooMap: { value: tattooTexture },
+                bgDiffuse: { value: diffuseTexture },
+                bgNormals: { value: normalTexture },
+                bgSpecular: { value: specTexture },
             },
             transparent: true,
             vertexShader,
             fragmentShader,
         })
 
-        const tattooMesh = new Mesh(tattooGeometry, tattooMaterial)
+        const tattooMesh = new Mesh(tattooGeometry, this.tattooMaterial)
+        tattooMesh.scale.setScalar(0.5)
+        tattooMesh.position.z = 0.001
 
         this.scene.add(tattooMesh)
 
@@ -155,6 +144,8 @@ export default {
                 scene: this.scene,
                 camera: this.camera,
             })
+
+            this.tattooMaterial.uniforms.time.value++
 
             this.renderer.render(this.scene, this.camera)
         },
