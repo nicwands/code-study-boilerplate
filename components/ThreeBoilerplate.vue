@@ -108,25 +108,14 @@ export default {
             new BufferAttribute(vertices, 3)
         )
 
-        // const tattooMaterial = new ShaderMaterial({
-        //     uniforms: {
-        //         bgDiffuse: diffuseTexture,
-        //         bgNormals: normalTexture,
-        //         bgSpecular: specTexture,
-        //     },
-        //     vertexShader,
-        //     fragmentShader,
-        // })
-
-        const tattooMaterial = new MeshPhongMaterial({
-            color: '#ff0000',
-            map: diffuseTexture,
-            normalMap: normalTexture,
-            normalScale: new Vector2(1, 1),
-            specularMap: specTexture,
-            // displacementMap: displaceTexture,
-            // displacementScale: 0.1,
-            side: DoubleSide,
+        const tattooMaterial = new ShaderMaterial({
+            uniforms: {
+                bgDiffuse: diffuseTexture,
+                bgNormals: normalTexture,
+                bgSpecular: specTexture,
+            },
+            vertexShader,
+            fragmentShader,
         })
 
         const tattooMesh = new Mesh(tattooGeometry, tattooMaterial)
