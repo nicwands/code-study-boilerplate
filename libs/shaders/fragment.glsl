@@ -1,5 +1,5 @@
 #ifdef GL_ES
-precision mediump float;
+precision highp float;
 #endif
 
 #ifdef GL_OES_standard_derivatives
@@ -21,7 +21,7 @@ uniform sampler2D bgSpecular;
 
 float absorb(float sdf, vec2 uv, float scale, float falloff) {
   float distort = sdf + noise2(uv * scale) * falloff;
-  float strength = mix(0.55, 1.1, abs(sin(time / 150.)));
+  float strength = mix(0.58, 1.1, abs(sin(time / 150.)));
   return aastep(strength, distort);
 }
 
