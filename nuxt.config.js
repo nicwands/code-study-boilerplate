@@ -12,7 +12,10 @@ const universal = {
         extend(config) {
             config.module.rules.push({
                 test: /\.glsl$/,
-                loader: 'webpack-glsl-loader',
+                use: [
+                    require.resolve('raw-loader'),
+                    require.resolve('glslify-loader'),
+                ],
             })
         },
         plugins: [

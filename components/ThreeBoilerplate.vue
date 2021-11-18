@@ -23,7 +23,6 @@ import {
 import { OrbitControls } from '~/libs/OrbitControls'
 import fragmentShader from '~/libs/shaders/fragment.glsl'
 import vertexShader from '~/libs/shaders/vertex.glsl'
-const glslify = require('glslify')
 
 require('resize-observer-polyfill/dist/ResizeObserver.global')
 
@@ -68,14 +67,14 @@ export default {
         const planeGeometry = new PlaneGeometry(1, 1)
 
         const diffuseTexture = new TextureLoader().load(
-            '/images/skin-diffuse.jpg'
+            '/images/skin-2-diffuse.png'
         )
         const normalTexture = new TextureLoader().load(
-            '/images/skin-normals.jpg'
+            '/images/skin-2-normals.png'
         )
-        const specTexture = new TextureLoader().load('/images/skin-spec.jpg')
+        const specTexture = new TextureLoader().load('/images/skin-2-spec.png')
         const displaceTexture = new TextureLoader().load(
-            '/images/skin-displace.jpg'
+            '/images/skin-2-displace.png'
         )
 
         const material = new MeshPhongMaterial({
@@ -108,12 +107,18 @@ export default {
             new BufferAttribute(vertices, 3)
         )
 
+        const tattooTexture = new TextureLoader().load('/images/favicon.png')
+
+        // tattooGeometry.setAttribute('')
+
         const tattooMaterial = new ShaderMaterial({
             uniforms: {
+                tattooMap: tattooTexture,
                 bgDiffuse: diffuseTexture,
                 bgNormals: normalTexture,
                 bgSpecular: specTexture,
             },
+            transparent: true,
             vertexShader,
             fragmentShader,
         })
