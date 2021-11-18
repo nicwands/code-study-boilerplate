@@ -95,7 +95,9 @@ export default {
         // tattoo
         const tattooGeometry = new PlaneGeometry()
 
-        const tattooTexture = new TextureLoader().load('/images/tattoo-sdf.png')
+        const tattooTexture = new TextureLoader().load(
+            '/images/tattoo-msdf.png'
+        )
 
         this.tattooMaterial = new ShaderMaterial({
             uniforms: {
