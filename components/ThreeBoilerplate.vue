@@ -106,7 +106,7 @@ export default {
         const tattooGeometry = new PlaneGeometry()
 
         const tattooTexture = new TextureLoader().load(
-            '/images/tattoo-msdf.png'
+            '/images/tribal-msdf.png'
         )
 
         this.tattooMaterial = new ShaderMaterial({

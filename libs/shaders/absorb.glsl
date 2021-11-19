@@ -3,7 +3,7 @@
 
 float absorb(float sdf, vec2 uv, float scale, float falloff) {
   float distort = sdf + noise2(uv * scale) * falloff;
-  return aastep(0.5, distort);
+  return aastep(0.6, distort);
 }
 
 #pragma glslify: export(absorb)

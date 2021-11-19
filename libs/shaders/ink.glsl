@@ -12,24 +12,4 @@ float ink(float sdf, vec2 uv) {
   return alpha;
 }
 
-//more splatter
-float graffiti(float sdf, vec2 uv) {
-  float alpha = 0.0;
-  alpha += absorb(sdf, uv, 600.0, 0.1) * 0.2;
-  alpha += absorb(sdf, uv, 300.0, 0.1) * 0.2;
-  alpha += absorb(sdf, uv, 20.0, 0.05) * 0.2;
-  alpha += absorb(sdf, uv, 400.0, 0.05) * 0.2;
-  alpha += absorb(sdf, uv, 100.0, 0.2) * 0.2;
-  return alpha;
-}
-
-float selectInk(int g, float sdf, vec2 uv) {
-  if (g == 1) {
-    return graffiti(sdf, uv);
-  }
-  else {
-    return ink(sdf, uv);
-  }
-}
-
-#pragma glslify: export(selectInk)
+#pragma glslify: export(ink)
