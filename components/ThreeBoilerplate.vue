@@ -13,12 +13,12 @@ import {
     MeshPhongMaterial,
     TextureLoader,
     Mesh,
+    AmbientLight,
     PointLight,
     DoubleSide,
     Vector2,
     ShaderMaterial,
-    BufferAttribute,
-    BufferGeometry,
+    ACESFilmicToneMapping,
 } from 'three'
 import { OrbitControls } from '~/libs/OrbitControls'
 import fragmentShader from '~/libs/shaders/fragment.glsl'
@@ -44,9 +44,17 @@ export default {
         // prep scene
         this.scene = new Scene()
 
-        const light = new PointLight(0xffffff, 2)
-        light.position.set(0, 4, 3)
+        // Lights
+        const ambient = new AmbientLight(0x404040)
+        this.scene.add(ambient)
+
+        const light = new PointLight(0xffffff, 1.5)
+        light.position.set(-2, 4, 3)
         this.scene.add(light)
+
+        const light2 = new PointLight(0xffffff, 0.5)
+        light2.position.set(0, 4, -2)
+        this.scene.add(light2)
 
         // prep camera
         const fov = 15
@@ -57,7 +65,9 @@ export default {
             canvas: this.$refs.canvas,
             antialias: true,
             alpha: true,
+            toneMapping: ACESFilmicToneMapping,
         })
+        this.renderer.setClearColor(0x000000, 1)
 
         this.orbitControls = new OrbitControls(
             this.camera,
