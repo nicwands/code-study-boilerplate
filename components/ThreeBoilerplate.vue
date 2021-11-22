@@ -74,6 +74,7 @@ export default {
             this.renderer.domElement
         )
 
+        // Skin plane
         const planeGeometry = new PlaneGeometry(1, 1)
 
         const diffuseTexture = new TextureLoader().load(
@@ -83,17 +84,12 @@ export default {
             '/images/skin-2-normals.png'
         )
         const specTexture = new TextureLoader().load('/images/skin-2-spec.png')
-        const displaceTexture = new TextureLoader().load(
-            '/images/skin-2-displace.png'
-        )
 
         const material = new MeshPhongMaterial({
             map: diffuseTexture,
             normalMap: normalTexture,
             normalScale: new Vector2(1, 1),
             specularMap: specTexture,
-            // displacementMap: displaceTexture,
-            // displacementScale: 0.1,
             side: DoubleSide,
         })
 

@@ -28,7 +28,7 @@ void main() {
     float dist = median(texColor.r, texColor.g, texColor.b);
     float alpha = 0.;
 
-    float strength = mix(0.4, 1., abs(sin(time / 150.)));
+    float strength = mix(0.4, 1.1, abs(sin(time / 150.)));
     alpha = mix(0., 1., ink(dist * strength, vUv));
 
     gl_FragColor.rgb = vec3(0.);
