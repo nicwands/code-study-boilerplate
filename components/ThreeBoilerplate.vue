@@ -19,6 +19,7 @@ import {
     Vector2,
     ShaderMaterial,
     ACESFilmicToneMapping,
+    Vector3,
 } from 'three'
 import { OrbitControls } from '~/libs/OrbitControls'
 import fragmentShader from '~/libs/shaders/fragment.glsl'
@@ -138,6 +139,10 @@ export default {
             camera: this.camera,
         })
 
+        this.record()
+            .then((url) => console.log(url))
+            .catch((err) => console.error(err))
+
         // update
         this.update()
     },
@@ -155,6 +160,8 @@ export default {
 
             this.tattooMaterial.uniforms.time.value++
 
+            this.cap?.capture(this.$refs.canvas)
+
             this.renderer.render(this.scene, this.camera)
         },
         updateSize() {
@@ -168,6 +175,34 @@ export default {
             this.camera.updateProjectionMatrix()
             this.renderer.setSize(this.containerWidth, this.containerHeight)
             this.renderer.render(this.scene, this.camera)
+        },
+        record() {
+            return new Promise(async (res, rej) => {
+                let chunks = []
+                const stream = this.$refs.canvas.captureStream(30)
+                this.mediaRecorder = new MediaRecorder(stream, {
+                    mimeType: 'video/webm; codecs=vp9',
+                    videoBitsPerSecond: 12000000,
+                })
+                this.mediaRecorder.start(4000)
+
+                this.mediaRecorder.ondataavailable = ({ data }) => {
+                    chunks.push(data)
+                }
+
+                this.mediaRecorder.onstop = () => {
+                    var blob = new Blob(chunks, { type: 'video/webm' })
+                    var url = URL.createObjectURL(blob)
+                    res(url)
+                }
+
+                this.mediaRecorder.onerror = (err) => {
+                    rej(err)
+                }
+
+                await new Promise((res) => setTimeout(res, 10000))
+                this.mediaRecorder.stop()
+            })
         },
     },
 }
