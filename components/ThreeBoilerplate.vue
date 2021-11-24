@@ -160,8 +160,6 @@ export default {
 
             this.tattooMaterial.uniforms.time.value++
 
-            this.cap?.capture(this.$refs.canvas)
-
             this.renderer.render(this.scene, this.camera)
         },
         updateSize() {
