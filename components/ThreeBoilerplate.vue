@@ -1,6 +1,7 @@
 <template>
     <div ref="container" class="three-canvas-wrapper">
         <canvas ref="canvas" class="three-canvas" />
+        <span v-if="assetUrl" id="assetUrl">{{ assetUrl }}</span>
     </div>
 </template>
 
@@ -30,6 +31,8 @@ require('resize-observer-polyfill/dist/ResizeObserver.global')
 export default {
     data() {
         return {
+            assetUrl: null,
+
             resizeObserver: null,
 
             containerWidth: 0,
@@ -140,7 +143,7 @@ export default {
         })
 
         this.record()
-            .then((url) => console.log(url))
+            .then((url) => (this.assetUrl = url))
             .catch((err) => console.error(err))
 
         // update
