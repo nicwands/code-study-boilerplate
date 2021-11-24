@@ -219,4 +219,10 @@ export default {
     width: 100%;
     height: 100%;
 }
+
+#assetUrl {
+    position: absolute;
+    z-index: 50;
+    color: var(--white);
+}
 </style>
