@@ -1,7 +1,7 @@
 <template>
     <div ref="container" class="three-canvas-wrapper">
         <canvas ref="canvas" class="three-canvas" />
-        <span v-if="assetUrl" id="assetUrl">{{ assetUrl }}</span>
+        <a v-if="assetUrl" id="assetUrl" :href="assetUrl" download>video</a>
     </div>
 </template>
 
@@ -20,7 +20,6 @@ import {
     Vector2,
     ShaderMaterial,
     ACESFilmicToneMapping,
-    Vector3,
 } from 'three'
 import { OrbitControls } from '~/libs/OrbitControls'
 import fragmentShader from '~/libs/shaders/fragment.glsl'
