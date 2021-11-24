@@ -9,6 +9,15 @@ const universal = {
      */
     components: ['~/components'],
     build: {
+        extend(config) {
+            config.module.rules.push({
+                test: /\.glsl$/,
+                use: [
+                    require.resolve('raw-loader'),
+                    require.resolve('glslify-loader'),
+                ],
+            })
+        },
         plugins: [
             new webpack.ProvidePlugin({
                 _get: 'lodash/get',
@@ -77,6 +86,16 @@ const universal = {
     // gtm: {
     //     id: 'GTM-P9TGQDN',
     // },
+
+    buildModules: ['nuxt-graphql-request'],
+
+    graphql: {
+        clients: {
+            default: {
+                endpoint: process.env.ZORA_API_URL,
+            },
+        },
+    },
 
     /*
      * Plugins
