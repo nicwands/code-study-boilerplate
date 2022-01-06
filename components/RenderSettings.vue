@@ -10,7 +10,13 @@
         <p v-else-if="error">An error has occured</p>
 
         <!-- FINAL IMAGE -->
-        <img v-else-if="!loading && renderImage" :src="renderImage" />
+        <a
+            v-else-if="!loading && renderImage"
+            :href="renderImage"
+            download="houdini-render.png"
+        >
+            <img :src="renderImage" />
+        </a>
 
         <!-- SETTINGS -->
         <div v-else class="settings">
@@ -36,7 +42,9 @@ export default {
             this.loading = true
 
             try {
-                const blob = await fetch('http://localhost:8008/render', {
+                // const backendUrl = 'http://localhost:8008/render'
+                const backendUrl = 'https://panola.ddns.net:5000/render'
+                const blob = await fetch(backendUrl, {
                     method: 'POST',
                     body: JSON.stringify({
                         noise_offset: this.noiseOffset,
