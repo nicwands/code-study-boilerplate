@@ -3,12 +3,12 @@
         <div class="contained">
             <section class="info">
                 <!-- STUDY TITLE -->
-                <h1>CODE STUDY 4.0 - TATTOO TEXTURE</h1>
+                <h1>CODE STUDY 5.0 - HOUDINI REMOTE RENDER</h1>
                 <!-- DESCRIPTION -->
-                <p>A proof-of-concept for the Scab Shop tattoo NFTs</p>
+                <p>A proof-of-concept for remote rendering a Houdini scene</p>
                 <!-- LINK -->
                 <a
-                    href="https://github.com/nicwands/code-study-boilerplate/blob/shader-text/components/ThreeBoilerplate.vue"
+                    href="https://github.com/nicwands/code-study-boilerplate/blob/houdini-render/components/RenderSettings.vue"
                     target="_blank"
                     >SOURCE</a
                 >

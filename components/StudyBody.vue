@@ -1,7 +1,6 @@
 <template>
     <section class="study-body">
-        <!-- <face-morph /> -->
-        <three-boilerplate />
+        <render-settings />
     </section>
 </template>
 
