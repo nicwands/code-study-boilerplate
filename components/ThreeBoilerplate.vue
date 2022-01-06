@@ -20,6 +20,7 @@ import {
     ShaderMaterial,
     ACESFilmicToneMapping,
 } from 'three'
+import { loadGltf } from '../libs/loadGltf'
 import { OrbitControls } from '~/libs/OrbitControls'
 import fragmentShader from '~/libs/shaders/fragment.glsl'
 import vertexShader from '~/libs/shaders/vertex.glsl'
@@ -40,7 +41,7 @@ export default {
             // * camera
         }
     },
-    mounted() {
+    async mounted() {
         // prep scene
         this.scene = new Scene()
 
@@ -123,6 +124,10 @@ export default {
         tattooMesh.position.z = 0.001
 
         this.scene.add(tattooMesh)
+
+        // Model
+        const loadedModel = await loadGltf('/models/tattoo_gun/scene.gltf')
+        this.scene.add(loadedModel)
 
         // update canvas size
         this.updateSize()
