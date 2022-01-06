@@ -43,7 +43,7 @@ export default {
 
             try {
                 // const backendUrl = 'http://localhost:8008/render'
-                const backendUrl = 'https://panola.ddns.net:5000/render'
+                const backendUrl = 'http://panola.ddns.net:5000/render'
                 const blob = await fetch(backendUrl, {
                     method: 'POST',
                     body: JSON.stringify({
