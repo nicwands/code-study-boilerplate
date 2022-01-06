@@ -1,5 +1,6 @@
 <template functional>
     <svg
+        id="linkedIn"
         class="svg-social-linkedin"
         xmlns="http://www.w3.org/2000/svg"
         width="21.639"
