@@ -1,6 +1,6 @@
 <template>
     <section class="study-body">
-        <render-settings />
+        <audio-player />
     </section>
 </template>
 
