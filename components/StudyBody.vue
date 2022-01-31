@@ -1,6 +1,8 @@
 <template>
     <section class="study-body">
-        <audio-player />
+        <add-artist />
+        <mint-nft />
+        <stamp-nft />
     </section>
 </template>
 
@@ -15,5 +17,19 @@ export default {}
     box-sizing: border-box;
     margin-top: 20px;
     position: relative;
+
+    button[type='submit'] {
+        background: var(--black);
+        padding: 10px 30px;
+        color: var(--white);
+        margin: 20px 0;
+        border: 1px solid var(--black);
+        transition: color 300ms ease, background 300ms ease;
+
+        @include hover {
+            color: var(--black);
+            background: var(--white);
+        }
+    }
 }
 </style>
