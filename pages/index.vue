@@ -3,12 +3,17 @@
         <div class="contained">
             <section class="info">
                 <!-- STUDY TITLE -->
-                <h1>CODE STUDY 5.0 - HOUDINI REMOTE RENDER</h1>
+                <h1>Scab Shop Vue Components</h1>
                 <!-- DESCRIPTION -->
-                <p>A proof-of-concept for remote rendering a Houdini scene</p>
+                <p>
+                    Vue components ported over from Greg's
+                    <a href="https://github.com/CTHDRL/scabshop-contracts"
+                        >React library</a
+                    >
+                </p>
                 <!-- LINK -->
                 <a
-                    href="https://github.com/nicwands/code-study-boilerplate/blob/houdini-render/components/RenderSettings.vue"
+                    href="https://github.com/nicwands/code-study-boilerplate/tree/scab-shop-frontend"
                     target="_blank"
                     >SOURCE</a
                 >
@@ -36,6 +41,7 @@ export default {}
         h1 {
             margin: 0;
             font-size: 20px;
+            text-transform: uppercase;
         }
     }
 }
