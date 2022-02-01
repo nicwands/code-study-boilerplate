@@ -17,17 +17,21 @@ export default {
             walletAddress: '',
         }
     },
+    computed: {
+        userWallet() {
+            return this.$store.state.web3.wallet
+        },
+    },
     methods: {
         async addArtist() {
-            // TODO get wallet from vuex
-            const wallet = ''
+            if (!this.userWallet) return
             const ownershipContract = new ethers.Contract(
                 process.env.CONTRACT_ADDRESS,
                 ScabShop.abi,
-                wallet.signer
+                this.userWallet.signer
             )
             const minterRole = await ownershipContract.MINTER_ROLE()
-            await ownershipContract.grantRole(minterRole, data.address)
+            await ownershipContract.grantRole(minterRole, this.walletAddress)
         },
     },
 }
@@ -35,8 +39,5 @@ export default {
 
 <style lang="scss">
 .add-artist {
-    input {
-        display: block;
-    }
 }
 </style>

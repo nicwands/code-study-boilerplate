@@ -1,5 +1,8 @@
 <template>
     <form class="stamp-nft" @submit.prevent="stampNft">
+        <h4>Stamp NFT</h4>
+        <label for="nftId">NFT ID</label>
+        <input type="text" v-model="nftId" />
         <label for="stampedTo">Stamped To</label>
         <input type="text" v-model="stampedTo" id="stampedTo" />
 
@@ -14,13 +17,19 @@ import ScabShop from '~/libs/abis/ScabShop.json'
 export default {
     data() {
         return {
+            nftId: '',
             stampedTo: '',
         }
+    },
+    computed: {
+        userWallet() {
+            return this.$store.state.web3.wallet
+        },
     },
     methods: {
         async stampNft() {
             const data = await fetch(
-                `${process.env.ENDPOINT}/api/nfts/TODO/stamp`,
+                `${process.env.ENDPOINT}/api/nfts/${this.nftId}/stamp`,
                 {
                     method: 'PATCH',
                     body: JSON.stringify({
@@ -36,14 +45,11 @@ export default {
             }
         },
         async onSuccess(data) {
-            // TODO get wallet from vuex
-            const wallet = ''
-            // TODO get nft info
-            const nft = ''
+            if (!this.userWallet) return
             const ownershipContract = new ethers.Contract(
                 process.env.CONTRACT_ADDRESS,
                 ScabShop.abi,
-                wallet.signer
+                this.userWallet.signer
             )
             await ownershipContract.stamp(nft.token_id, data.metadata_hash)
         },
@@ -53,8 +59,5 @@ export default {
 
 <style lang="scss">
 .stamp-nft {
-    input {
-        display: block;
-    }
 }
 </style>

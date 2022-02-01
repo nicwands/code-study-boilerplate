@@ -28,6 +28,11 @@ export default {
             royalty: '',
         }
     },
+    computed: {
+        userWallet() {
+            return this.$store.state.web3.wallet
+        },
+    },
     methods: {
         async mintNft() {
             const data = await fetch(`${process.env.ENDPOINT}/api/nfts`, {
@@ -47,12 +52,11 @@ export default {
             }
         },
         async onSuccess(data) {
-            // TODO get wallet from vuex
-            const wallet = ''
+            if (!this.userWallet) return
             const ownershipContract = new ethers.Contract(
                 process.env.CONTRACT_ADDRESS,
                 ScabShop.abi,
-                wallet.signer
+                this.userWallet.signer
             )
             await ownershipContract.mint(
                 data.metadata_hash,
@@ -66,9 +70,5 @@ export default {
 
 <style lang="scss">
 .mint-nft {
-    input,
-    textarea {
-        display: block;
-    }
 }
 </style>
