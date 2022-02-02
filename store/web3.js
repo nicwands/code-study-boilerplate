@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import WalletConnectProvider from '@walletconnect/web3-provider'
-import { providers } from 'ethers'
+import { ethers, providers } from 'ethers'
 import _cloneDeep from 'lodash/cloneDeep'
 
 export const state = () => {
@@ -34,7 +34,6 @@ export const actions = {
                 rpc: {
                     // ETH
                     1: 'https://cloudflare-eth.com',
-                    5777: 'http://127.0.0.1:7545',
                 },
                 // qrcode: false,
             })
