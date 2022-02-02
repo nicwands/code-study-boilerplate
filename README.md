@@ -20,6 +20,16 @@ Mints the artist's tattoo to the contract
 [`/components/StampNft.vue`](https://github.com/nicwands/code-study-boilerplate/blob/scab-shop-frontend/components/StampNft.vue)
 Stamps an artist's NFT to indicate it was tattooed on a person
 
+### ABIs
+
+[`/libs/abis/ScabShop.json`](https://github.com/nicwands/code-study-boilerplate/blob/scab-shop-frontend/libs/abis/ScabShop.json)
+The compiled Scab Shop contract
+
+### Packages Needed
+
+-   `@walletconnect/web3-provider`
+-   `ethers`
+
 **Local Development**
 
 -   `nvm i 12`
